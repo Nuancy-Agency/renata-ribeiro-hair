@@ -1,0 +1,121 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------
+   Fontes auto-hospedadas (WOFF2, variáveis) — ver site-forge/research/identity.json
+   Bodoni Moda (título) e Manrope (corpo): escolha justificada no relatório
+   do site-forge, derivada da peça gráfica real "SEU CABELO MERECE O melhor"
+   (DWgGLePjFfW.jpg) e da regra de nunca reaproveitar tipografia de outro
+   cliente da agência.
+--------------------------------------------------------------------- */
+@font-face {
+  font-family: "Bodoni Moda Variable";
+  src: url("/fonts/bodoni-moda-variable.woff2") format("woff2-variations"),
+    url("/fonts/bodoni-moda-variable.woff2") format("woff2");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope Variable";
+  src: url("/fonts/manrope-variable.woff2") format("woff2-variations"),
+    url("/fonts/manrope-variable.woff2") format("woff2");
+  font-weight: 400 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  /* Tipografia */
+  --font-display: "Bodoni Moda Variable", ui-serif, Georgia, "Times New Roman", serif;
+  --font-body: "Manrope Variable", ui-sans-serif, system-ui, -apple-system, sans-serif;
+
+  /* Paleta — derivada exclusivamente de site-forge/research/identity.json
+     (estimativas visuais reais do Instagram de @renata_ribeirohairs, nunca
+     reaproveitadas de outro cliente da agência) */
+  --color-ink: #1a1a1a; /* primária: preto/carvão */
+  --color-ink-soft: #3a332f;
+  --color-accent: #9c4726; /* destaque: terracota/laranja queimado, ajustado para AA (4.5:1+) sobre --color-paper-deep — ver auditoria Impeccable */
+  --color-accent-deep: #7a3419;
+  --color-blush: #f2c9cf; /* fundo: rosa pastel do ícone de marca já existente — elemento mais "oficial" da identidade */
+  --color-gold: #c9a876; /* loiro recorrente nos cabelos das clientes */
+  --color-umber: #6b4a3a; /* moreno iluminado */
+  --color-sand: #a08b78; /* bege de fundo de estúdio */
+  --color-paper: #ffffff; /* branco de fundo de estúdio, documentado em Análise Visual.md (não um cream/beige genérico) */
+  --color-paper-deep: #fbeef0; /* tinta pálida do rosa blush real da marca (--color-blush), não um bege neutro genérico */
+
+  --radius-brand: 0.25rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    color-scheme: light;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+  }
+
+  /* --color-accent contra --color-ink mede ~2.77:1, abaixo do mínimo de 3:1
+     do WCAG 2.4.11 para indicadores de UI — achado P1 do /impeccable critique
+     2026-09-12. Nas seções de fundo escuro (Hero, CtaFinal, Depoimentos), o
+     anel de foco usa --color-paper em vez de --color-accent. */
+  .bg-ink :focus-visible {
+    outline-color: var(--color-paper);
+  }
+}
+
+[x-cloak] {
+  display: none !important;
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+}

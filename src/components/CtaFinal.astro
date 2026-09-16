@@ -1,0 +1,25 @@
+---
+import { whatsappLink } from "../data/whatsapp";
+
+const ctaHref = whatsappLink("Olá, Renata! Quero agendar o meu horário.");
+---
+
+<section class="bg-ink py-16 sm:py-20">
+  <div class="reveal mx-auto max-w-3xl px-5 text-center sm:px-8">
+    <h2 class="font-display text-3xl font-medium text-paper sm:text-4xl">
+      Agende seu horário.
+    </h2>
+    <p class="mt-4 text-base text-paper/75 sm:text-lg">
+      Fale diretamente com a Renata pelo WhatsApp e marque a sua
+      transformação.
+    </p>
+    <a
+      href={ctaHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="mt-8 inline-flex items-center justify-center rounded-full bg-accent px-8 py-4 text-base font-semibold text-paper transition-colors hover:bg-accent-deep"
+    >
+      Agendar no WhatsApp
+    </a>
+  </div>
+</section>

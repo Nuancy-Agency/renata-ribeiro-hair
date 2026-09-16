@@ -1,0 +1,52 @@
+---
+import { whatsappLink } from "../data/whatsapp";
+
+const endereco = "Rua das Pedralvas 15, sala 12, Benfica, Lisboa";
+const mapsHref = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  endereco,
+)}`;
+const ctaHref = whatsappLink("Olá, Renata! Vi a localização no site e quero agendar.");
+---
+
+<section id="localizacao" class="scroll-mt-20 bg-paper-deep py-20 sm:py-28">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 md:grid-cols-2 md:gap-16">
+    <div class="reveal">
+      <h2 class="font-display text-3xl font-medium text-ink sm:text-4xl">
+        Localização & contato: venha nos visitar em Benfica
+      </h2>
+      <address class="mt-6 not-italic text-base leading-relaxed text-ink-soft sm:text-lg">
+        Rua das Pedralvas 15, sala 12<br />
+        Benfica, Lisboa &middot; Portugal
+      </address>
+
+      <div class="mt-8 flex flex-col gap-3 sm:flex-row">
+        <a
+          href={mapsHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-full border border-ink px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
+        >
+          Ver no Google Maps
+        </a>
+        <a
+          href={ctaHref}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center justify-center rounded-full bg-accent px-6 py-3 text-sm font-semibold text-paper transition-colors hover:bg-accent-deep"
+        >
+          Agendar no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal overflow-hidden rounded-sm border border-ink/10" style="transition-delay: 120ms;">
+      <iframe
+        title={`Mapa: ${endereco}`}
+        src={`https://www.google.com/maps?q=${encodeURIComponent(endereco)}&output=embed`}
+        class="h-full min-h-[320px] w-full"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+  </div>
+</section>

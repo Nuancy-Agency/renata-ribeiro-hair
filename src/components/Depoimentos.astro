@@ -1,0 +1,62 @@
+---
+// Depoimentos verbatim, coletados nos comentários reais do post de maior
+// engajamento do Instagram ("Técnica certa / Mega Hair") — ver
+// Análise de Instagram.md, seção "Provas Sociais e Diferenciais".
+// Nenhum texto ou nome foi inventado; nenhuma foto de perfil fabricada.
+const depoimentos = [
+  {
+    texto:
+      "Um trabalho que reflecte técnica, sensibilidade e um elevado padrão profissional. Verdadeiramente de excelência.",
+    autor: "@liliana_aranha",
+  },
+  {
+    texto:
+      "Especialista em loiras, em mega, em elevar a autoestima das mulheres.... Saudades e muito sucesso, pois vc merece.",
+    autor: "@viviguete",
+  },
+  {
+    texto: "A melhor, nacional e internacional.",
+    autor: "@manicure_saocarlosvivi",
+  },
+  {
+    texto: "Confio de olhos fechados.",
+    autor: "@ivirocha_",
+  },
+  {
+    texto: "Ela é perfeita, super indico, não irão se arrepender.",
+    autor: "@claudiaclaudia542024",
+  },
+];
+---
+
+<section id="depoimentos" class="scroll-mt-20 bg-ink py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <h2 class="font-display text-3xl font-medium text-paper sm:text-4xl">
+        Depoimentos: quem já viveu a transformação
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-paper/70 sm:text-lg">
+        Comentários reais deixados por clientes e colegas no Instagram
+        @renata_ribeirohairs.
+      </p>
+    </div>
+
+    <ul class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        depoimentos.map((depoimento, i) => (
+          <li
+            class="reveal rounded-sm border border-paper/10 bg-paper/5 p-6"
+            style={`transition-delay: ${i * 80}ms;`}
+          >
+            <p class="font-display text-lg italic leading-snug text-paper">
+              &ldquo;{depoimento.texto}&rdquo;
+            </p>
+            <p class="mt-4 text-sm font-medium text-blush" translate="no">
+              {depoimento.autor}
+            </p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

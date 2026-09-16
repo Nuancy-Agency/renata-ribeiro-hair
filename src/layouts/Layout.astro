@@ -1,0 +1,94 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="theme-color" content="#faf6f2" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <link
+      rel="preload"
+      href="/fonts/bodoni-moda-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href="/fonts/manrope-variable.woff2"
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+
+    <!-- Sem JS (bloqueado, CSP, falha de rede): o reveal-on-scroll não pode
+         deixar conteúdo em opacity:0 para sempre, e o menu mobile (Alpine)
+         não pode ficar um botão morto escondendo os links de navegação. -->
+    <noscript>
+      <style>
+        .reveal {
+          opacity: 1 !important;
+          transform: none !important;
+        }
+        [data-js-toggle] {
+          display: none !important;
+        }
+        #menu-mobile[x-cloak] {
+          display: block !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body class="antialiased">
+    <a
+      href="#conteudo"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:rounded focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+    >
+      Saltar para o conteúdo
+    </a>
+    <slot />
+
+    <script>
+      import Alpine from "alpinejs";
+
+      declare global {
+        interface Window {
+          Alpine: typeof Alpine;
+        }
+      }
+
+      window.Alpine = Alpine;
+      Alpine.start();
+    </script>
+
+    <script>
+      // Scroll reveal discreto — respeita prefers-reduced-motion (ver global.css)
+      const observer = new IntersectionObserver(
+        (entries) => {
+          for (const entry of entries) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          }
+        },
+        { threshold: 0.15 },
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

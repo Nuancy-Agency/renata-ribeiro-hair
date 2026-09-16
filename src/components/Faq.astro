@@ -1,0 +1,58 @@
+---
+// Mini-FAQ adicionada em 2026-09-12 (achado P1 do /impeccable critique:
+// nenhuma seção respondia dúvidas de primeira visita antes do CTA final,
+// obrigando quem nunca fez extensão a perguntar tudo "a frio" no WhatsApp).
+// Respostas usam só informação já verificada em outras seções do site
+// (técnica hipoalergênica, avaliação individual sem preço fixo) — nenhuma
+// alegação nova/específica (duração, dor, frequência de lavagem) foi
+// inventada sem confirmação da cliente.
+const perguntas = [
+  {
+    pergunta: "A extensão pesa na raiz ou incomoda no dia a dia?",
+    resposta:
+      "A técnica de fita adesiva usada pela Renata é hipoalergênica, com aplicação rápida e acabamento leve — pensada justamente para não pesar na raiz nem incomodar no uso diário.",
+  },
+  {
+    pergunta: "Por que não tem tabela de preços no site?",
+    resposta:
+      "Cada cabelo é avaliado individualmente antes de indicar quantidade, técnica e valor — por isso o investimento é sempre confirmado diretamente com a Renata, e não numa tabela genérica.",
+  },
+  {
+    pergunta: "Dá para saber se o meu cabelo aguenta a técnica antes de agendar?",
+    resposta:
+      "Sim — a primeira conversa pelo WhatsApp já serve para a Renata entender o estado do seu cabelo natural e indicar a técnica mais adequada para o seu caso, antes de qualquer compromisso.",
+  },
+  {
+    pergunta: "Como funciona para marcar a primeira avaliação?",
+    resposta:
+      "É só chamar no WhatsApp contando o que você procura — a Renata responde diretamente e combina o melhor horário para avaliar o seu cabelo em Benfica, Lisboa.",
+  },
+];
+---
+
+<section id="perguntas" class="scroll-mt-20 bg-paper py-20 sm:py-28">
+  <div class="reveal mx-auto max-w-3xl px-5 sm:px-8">
+    <h2 class="font-display text-3xl font-medium text-ink sm:text-4xl">
+      Perguntas antes de agendar
+    </h2>
+
+    <div class="mt-8 divide-y divide-ink/10 border-t border-b border-ink/10">
+      {
+        perguntas.map((item) => (
+          <details class="group py-5">
+            <summary class="flex cursor-pointer list-none items-center justify-between gap-4 text-base font-semibold text-ink marker:content-none">
+              {item.pergunta}
+              <span
+                aria-hidden="true"
+                class="shrink-0 text-xl leading-none text-accent transition-transform duration-200 group-open:rotate-45"
+              >
+                +
+              </span>
+            </summary>
+            <p class="mt-3 text-sm leading-relaxed text-ink-soft sm:text-base">{item.resposta}</p>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>

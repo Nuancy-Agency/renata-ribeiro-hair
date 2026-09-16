@@ -1,0 +1,100 @@
+---
+import { Image } from "astro:assets";
+import megaHairImage from "../assets/media/servico-mega-hair.jpg";
+import coloracaoImage from "../assets/media/servico-coloracao.jpg";
+import loiroImage from "../assets/media/servico-loiro.jpg";
+import { whatsappLink } from "../data/whatsapp";
+
+const servicos = [
+  {
+    nome: "Mega Hair · Extensão Fita Adesiva",
+    descricao:
+      "Técnica de fita adesiva hipoalergênica: aplicação rápida, sem peso na raiz e com acabamento leve e imperceptível.",
+    image: megaHairImage,
+    mensagem: "Olá, Renata! Quero saber mais sobre Mega Hair / Extensão de Cabelo.",
+  },
+  {
+    nome: "Coloração & Iluminados",
+    descricao:
+      "Morena iluminada, mechas e dimensão de cor pensadas para valorizar o tom de pele e a personalidade de cada cliente.",
+    image: coloracaoImage,
+    mensagem: "Olá, Renata! Quero saber mais sobre Coloração / Iluminados.",
+  },
+  {
+    nome: "Loiro",
+    descricao:
+      "Transformações em loiro com cuidado técnico para manter o cabelo saudável, brilhante e com movimento natural.",
+    image: loiroImage,
+    mensagem: "Olá, Renata! Quero saber mais sobre transformação em Loiro.",
+  },
+];
+
+// Tags adicionadas em 2026-09-12, todas com base em temas reais e recorrentes
+// no Instagram da Renata (Análise de Instagram.md) — nenhuma inventada.
+const outrosServicos = [
+  "Alisamento / Progressiva",
+  "Cuidados pós-química",
+  "Styling & Finalização",
+  "Combo Alisamento + Extensão",
+];
+---
+
+<section id="servicos" class="scroll-mt-20 bg-paper-deep py-20 sm:py-28">
+  <div class="mx-auto max-w-6xl px-5 sm:px-8">
+    <div class="reveal max-w-2xl">
+      <h2 class="font-display text-3xl font-medium text-ink sm:text-4xl">
+        Especialidades: cada transformação pensada para você
+      </h2>
+      <p class="mt-4 text-base leading-relaxed text-ink-soft sm:text-lg">
+        Sem preços fixos publicados: cada cabelo é avaliado individualmente.
+        Fale com a Renata pelo WhatsApp para confirmar disponibilidade e
+        valores para o seu caso.
+      </p>
+    </div>
+
+    <div class="mt-12 grid gap-8 md:grid-cols-3">
+      {
+        servicos.map((servico, i) => (
+          <article
+            class="reveal flex flex-col overflow-hidden rounded-sm bg-paper shadow-sm transition-shadow hover:shadow-lg"
+            style={`transition-delay: ${i * 100}ms;`}
+          >
+            <Image
+              src={servico.image}
+              alt={`Resultado real de ${servico.nome}`}
+              class="aspect-[4/5] w-full object-cover"
+              widths={[320, 480, 640]}
+              sizes="(min-width: 768px) 30vw, 90vw"
+              loading="lazy"
+            />
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="font-display text-xl font-medium text-ink">{servico.nome}</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">
+                {servico.descricao}
+              </p>
+              <a
+                href={whatsappLink(servico.mensagem)}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="mt-3 inline-flex items-center gap-1.5 py-3 text-sm font-semibold text-accent transition-colors hover:text-accent-deep"
+              >
+                Quero saber mais
+                <span aria-hidden="true">&rarr;</span>
+              </a>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <ul class="reveal mt-10 flex flex-wrap gap-3" style="transition-delay: 300ms;">
+      {
+        outrosServicos.map((nome) => (
+          <li class="rounded-full border border-ink/15 bg-paper px-4 py-2 text-sm font-medium text-ink-soft">
+            {nome}
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>

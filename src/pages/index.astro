@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Sobre from "../components/Sobre.astro";
+import Servicos from "../components/Servicos.astro";
+import AntesDepois from "../components/AntesDepois.astro";
+import Depoimentos from "../components/Depoimentos.astro";
+import Localizacao from "../components/Localizacao.astro";
+import Faq from "../components/Faq.astro";
+import CtaFinal from "../components/CtaFinal.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout
+  title="Renata Ribeiro Hair | Extensões de Cabelo em Lisboa"
+  description="Cabeleireira especialista em extensão de cabelo (mega hair, técnica fita adesiva), coloração e alisamento em Benfica, Lisboa. 14 anos devolvendo a autoestima de mulheres."
+>
+  <Header />
+  <main id="conteudo">
+    <Hero />
+    <Sobre />
+    <Servicos />
+    <AntesDepois />
+    <Depoimentos />
+    <Localizacao />
+    <Faq />
+    <CtaFinal />
+  </main>
+  <Footer />
+</Layout>

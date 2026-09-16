@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+import sobreImage from "../assets/media/sobre-renata-3.png";
+import { whatsappLink } from "../data/whatsapp";
+
+const ctaHref = whatsappLink("Olá, Renata! Vi a sua história no site e queria conversar.");
+---
+
+<section id="sobre" class="scroll-mt-20 bg-paper py-20 sm:py-28">
+  <div class="mx-auto grid max-w-6xl gap-10 px-5 sm:px-8 md:grid-cols-2 md:items-center md:gap-16">
+    <div class="reveal order-2 md:order-1">
+      <h2 class="font-display text-3xl font-medium text-ink sm:text-4xl">
+        14 anos devolvendo a autoestima de mulheres
+      </h2>
+      <p class="mt-6 text-base leading-relaxed text-ink-soft sm:text-lg">
+        Cabeleireira especializada em extensão de cabelo, Renata atende em
+        Lisboa. Seu trabalho vai além da técnica: cada aplicação é feita com
+        cuidado, respeitando o cabelo natural da cliente e buscando um
+        resultado leve, confortável e imperceptível.
+      </p>
+      <p class="mt-4 text-base leading-relaxed text-ink-soft sm:text-lg">
+        &ldquo;A extensão de cabelo não muda quem você é. Ela realça a sua
+        beleza e devolve aquela confiança que faz toda a diferença.&rdquo;
+      </p>
+      <a
+        href={ctaHref}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="mt-8 inline-flex items-center justify-center rounded-full border border-ink px-6 py-3 text-sm font-semibold text-ink transition-colors hover:bg-ink hover:text-paper"
+      >
+        Falar com a Renata
+      </a>
+    </div>
+
+    <div class="reveal order-1 md:order-2" style="transition-delay: 120ms;">
+      <Image
+        src={sobreImage}
+        alt="Retrato da cabeleireira Renata Ribeiro"
+        class="aspect-[4/5] w-full rounded-sm object-cover object-top shadow-xl"
+        widths={[400, 600, 800]}
+        sizes="(min-width: 768px) 40vw, 90vw"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
